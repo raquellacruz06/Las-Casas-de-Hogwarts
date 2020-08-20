@@ -78,3 +78,14 @@ mayorPuntaje(Casa1, Casa2):-
     puntajeTotalCasa(Casa2, Puntaje2),
     Puntaje1 > Puntaje2.
 */
+
+%Con Forall
+casaGanadora(Casa):-
+    puntajeTotalCasa(Casa, Puntaje),
+    forall((puntajeTotalCasa(OtraCasa, OtroPuntaje), Casa \= OtraCasa), Puntaje > OtroPuntaje).
+
+%Con not
+casaGanadora(Casa):-
+    puntajeTotalCasa(Casa, Puntaje),
+    not((puntajeTotalCasa(_, OtroPuntaje), OtroPuntaje > Puntaje)).
+
